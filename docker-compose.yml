@@ -1,0 +1,17 @@
+services:
+  cosmos:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-latest
+    container_name: cosmodb-redux-cosmos
+    ports:
+      - "8081:8081" # Cosmos DB gateway
+      - "8082:8080" # Health probe (/ready, /alive, /status)
+      - "1234:1234" # Data Explorer
+    environment:
+      PROTOCOL: http
+      ENABLE_EXPLORER: "true"
+    volumes:
+      - cosmos-data:/data
+    restart: unless-stopped
+
+volumes:
+  cosmos-data:

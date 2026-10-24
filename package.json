@@ -1,0 +1,31 @@
+{
+  "name": "cosmodb-redux",
+  "version": "1.0.0",
+  "private": true,
+  "description": "User directory CRUD app — React 19 + Redux Toolkit + Express 5 + Azure Cosmos DB",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "./scripts/run.sh memory",
+    "dev:memory": "./scripts/run.sh memory",
+    "dev:cosmos": "./scripts/run.sh cosmos",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "setup": "npm run setup -w server",
+    "seed": "npm run seed -w server",
+    "cosmos:up": "docker compose up -d cosmos",
+    "cosmos:down": "docker compose down",
+    "test": "npm run test -w server && npm run test -w client",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w client"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}
